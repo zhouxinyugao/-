@@ -1,0 +1,28 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# ---- 密钥与本地配置（永不入库）----
+.env
+*.local.yaml
+config.local.*
+
+# ---- 运行产物（不入库，换机可丢弃；但保留占位目录）----
+outputs/
+!outputs/.gitkeep
+runs/
+!runs/.gitkeep
+*.log
+*.mp4
+*.wav
+*.mp3
+
+# ---- 编辑器 / 系统 ----
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

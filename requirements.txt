@@ -1,0 +1,5 @@
+# ai_framework 依赖
+# 运行环境：Python >= 3.10
+# 新增依赖请登记在此并注明用途，保证换机可复制
+
+pyyaml>=6.0        # 解析 workflow/*.yaml 工作流配置
