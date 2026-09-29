@@ -1,0 +1,23 @@
+# 示例：老项目的"血肉"怎么挂到框架上
+#
+#   标签剖析（api 插件）→ 分镜生成（skill 插件）
+#
+#   python main.py run -w workflow/tag_demo.yaml -i "西瓜，夏天解暑" -v
+#
+# 改动顺序只需动下面 nodes 的顺序或换 plugin_name，不用改任何 Python 代码。
+
+workflow_id: tag_demo
+
+nodes:
+  - node_id: tag_analyze
+    type: api
+    plugin_name: idea_tagger
+    params:
+      content_type: 广告          # params 通道：插件内 self.params 读取
+
+  - node_id: shot_plan
+    type: skill
+    plugin_name: tag_to_shots
+    params:
+      label_group_key: tag_analyze.label_group   # 读上游产物
+      shot_count: 3
