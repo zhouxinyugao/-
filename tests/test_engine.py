@@ -79,12 +79,13 @@ def node(node_id: str, ntype: str, plugin_name: str, **kw) -> dict:
 class TestDiscovery(unittest.TestCase):
     def test_discover_dummy_plugins(self):
         registry = PluginRegistry.discover(PLUGINS_DIR)
-        self.assertEqual(
-            registry.names(), ["api_dummy", "kb_dummy", "llm_dummy", "skill_print_payload"]
-        )
+        names = registry.names()
+        for expected in ("api_dummy", "kb_dummy", "llm_dummy", "skill_print_payload"):
+            self.assertIn(expected, names)
         self.assertEqual(registry.get("llm_dummy").plugin_type, "llm")
         self.assertEqual(registry.get("api_dummy").plugin_type, "api")
         self.assertEqual(registry.get("kb_dummy").plugin_type, "kb")
+        self.assertEqual(registry.get("skill_parallel_demo").plugin_type, "skill")
         self.assertEqual([], registry.warnings)
 
 

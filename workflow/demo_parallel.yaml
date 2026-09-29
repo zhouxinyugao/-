@@ -1,0 +1,17 @@
+# 演示「节点内并发 + 资产只放引用」
+#
+#   python main.py run -w workflow/demo_parallel.yaml -v
+#
+# 并发度写在 params.concurrency（老项目素片生成的默认值就是 3）；
+# 产物落到 outputs/<workflow_id>/<run_id>/assets/，payload 里只有引用字符串，不放实体。
+workflow_id: demo_parallel
+
+nodes:
+  - node_id: batch
+    type: skill
+    plugin_name: skill_parallel_demo
+    params:
+      items_key: shots        # 也可由上游节点写入 payload["shots"]
+      items: [shot_a, shot_b, shot_c, shot_d]
+      concurrency: 3
+      delay: 0.05

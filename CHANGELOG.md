@@ -16,11 +16,17 @@
 - `tests/test_engine.py`：unittest 覆盖生命周期、守卫、checkpoint、schema
 - `docs/GitHub同步规范.md`、`docs/决策与评审记录.md`
 
-### 待办（融合层骨头，见决策记录第三节）
-- [ ] 节点内并发（素片生成并发 3）
+### Added（第二批：融合层骨头）
+- `core/concurrency.py`：节点内并发工具（结果同序、fail-fast 可切、进度回调）
+- `core/assets.py`：资产落盘约定——实体落 `outputs/<wf>/<run>/assets/`，payload 只放引用
+- `plugins/skill_parallel_demo` + `workflow/demo_parallel.yaml`：并发与资产引用的可参考写法
+- `tests/test_core_utils.py`：并发与资产单测（合计 22 项）
+
+### 待办（融合层剩余骨头，见决策记录第三节）
+- [x] 节点内并发（素片生成并发 3）
+- [x] 资产引用约定（payload 只放路径，大件落 `outputs/`）
 - [ ] 子流程 / 嵌套节点
 - [ ] headless API + 进度回传给 UI
-- [ ] 资产引用约定（payload 只放路径，大件落 `outputs/`）
 
 ---
 

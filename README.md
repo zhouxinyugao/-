@@ -19,11 +19,12 @@ pip install -r requirements.txt
 
 python main.py list-plugins                                   # 看已发现的插件
 python main.py run -w workflow/demo.yaml -i "西瓜，夏天解暑" -v  # 跑一条工作流
+python main.py run -w demo_parallel.yaml -v                    # 节点内并发 + 资产只放引用
 python main.py run -w demo.yaml -i "..." --stop-at step_2     # 跑到某节点暂停
 python main.py run -w demo.yaml --resume <run_id>             # 断点续跑
 python main.py runs                                           # 历史运行记录
 
-python -m unittest discover -s tests -v                       # 单测（12 项）
+python -m unittest discover -s tests -v                       # 单测（22 项）
 ```
 
 ## 目录结构
@@ -35,7 +36,9 @@ ai_framework/
 ├─ core/
 │  ├─ engine.py            # 调度内核：串行驱动、生命周期、守卫、trace
 │  ├─ registry.py          # 插件注册与自动发现
-│  └─ checkpoint.py        # 每节点落盘，支持 resume
+│  ├─ checkpoint.py        # 每节点落盘，支持 resume
+│  ├─ concurrency.py       # 节点内并发工具（同序返回、fail-fast 可切、进度回调）
+│  └─ assets.py            # 资产落盘约定：payload 只放引用，实体落 outputs/
 ├─ plugins/                # 插件目录（自动扫描，一个插件一个子目录）
 ├─ workflow/               # YAML 工作流配置
 ├─ utils/schema_check.py   # 工作流结构校验
