@@ -12,9 +12,9 @@ env/
 config.local.*
 
 # ---- 运行产物（不入库，换机可丢弃；但保留占位目录）----
-outputs/
+outputs/*
 !outputs/.gitkeep
-runs/
+runs/*
 !runs/.gitkeep
 *.log
 *.mp4
