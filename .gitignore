@@ -11,6 +11,10 @@ env/
 *.local.yaml
 config.local.*
 
+# ---- 本机专属信息（账号 / 远端地址 / 密钥路径，换机即变，绝不入库）----
+docs/本机同步备忘.md
+docs/LOCAL-NOTES.md
+
 # ---- 运行产物（不入库，换机可丢弃；但保留占位目录）----
 outputs/*
 !outputs/.gitkeep

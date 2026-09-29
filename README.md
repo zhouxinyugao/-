@@ -1,7 +1,6 @@
 # ai_framework · 轻量插件式 AI 工作流调度框架
 
-> **状态：V0.1 骨架已跑通，已推送 GitHub**
-> 仓库：`https://github.com/zhouxinyugao/-`（当前为 public，计划转 private）
+> **状态：V0.1 骨架已跑通（22 项单测通过），已推送 GitHub 远端**
 > 目标：纯骨架框架，无内置业务逻辑；插件插拔、YAML 定义工作流、串行执行节点、
 > LLM 插件生命周期由框架强制管理、全局统一数据流转；适配单 GPU 显存有限场景。
 
@@ -84,18 +83,20 @@ workflow_data = {
 5. **产物**：`outputs/`、`runs/` 不入库
 6. **记录**：所有设计决策写入 `docs/`，与代码同仓保存
 7. **同步**：见 [`docs/GitHub同步规范.md`](docs/GitHub同步规范.md)
+8. **隐私**：仓库内**不出现**本机账号、真实远端地址、密钥路径等专属信息；
+   这些另记于 `docs/本机同步备忘.md`（已加 `.gitignore`，只存本机）
 
 ## 文档
 
 - [`docs/决策与评审记录.md`](docs/决策与评审记录.md) —— 本项目的"记忆"：
   设计评审（3 个 critical）、与既有项目融合分析、验收清单、GitHub 竞品调研、开源岔路
-- [`docs/GitHub同步规范.md`](docs/GitHub同步规范.md) —— 认证、提交粒度、不入库清单、换机恢复
+- [`docs/GitHub同步规范.md`](docs/GitHub同步规范.md) —— 认证、提交粒度、不入库清单、换机恢复（通用，不含本机信息）
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) —— 如何写插件 / 工作流
 - [`CHANGELOG.md`](CHANGELOG.md) —— 变更日志
 
 ## 同步与开源
 
-- **已打通**：本地 ↔ GitHub，每天 22:00 自动同步（无改动不动、单测不过不提交）
-- **当前可见性**：public。若要转 private：仓库 Settings → Danger Zone → Change visibility
+- **已打通**：本地 ↔ GitHub 远端，并配了每日自动同步（无改动不动、单测不过不提交、禁 `--force`）
+- **可见性**：按自己需要设置 private / public（仓库 Settings → Danger Zone → Change visibility）
 - **开源计划**：等差异化论证（为什么比「Ollama + Talos」这类组合更好用）写进决策记录后再正式对外。
-  详见 [`docs/决策与评审记录.md`](docs/决策与评审记录.md) 第四、五、七节。
+  详见 [`docs/决策与评审记录.md`](docs/决策与评审记录.md)。
