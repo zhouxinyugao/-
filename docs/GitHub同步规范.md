@@ -9,9 +9,9 @@
 
 | 项 | 当前约定 |
 |---|---|
-| 仓库名 | `ai_framework` |
+| 仓库地址 | `git@github.com:zhouxinyugao/-.git`（**已完成首次推送**，2026-09-30） |
 | 默认分支 | `master`（单人开发，日常直接提交主干；决定开源后再评估切 `develop` + PR 流程） |
-| 可见性 | **先 private** |
+| 可见性 | **当前是 public**（建仓时未选 private）。若不想公开：仓库 Settings → Danger Zone → Change visibility → Private |
 | 转 public 的前提 | `docs/决策与评审记录.md` 第四节里的"差异化论证"补齐（为什么比 Ollama+Talos 组合更好用） |
 
 理由：开源定位未定。先 private 既能拿云端备份与跨设备同步的好处，又不用提前承诺 API 稳定性。
