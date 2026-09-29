@@ -1,6 +1,7 @@
 # ai_framework · 轻量插件式 AI 工作流调度框架
 
-> **状态：V0.1 骨架已跑通（本地仓库，尚未推送远端）**
+> **状态：V0.1 骨架已跑通，已推送 GitHub**
+> 仓库：`https://github.com/zhouxinyugao/-`（当前为 public，计划转 private）
 > 目标：纯骨架框架，无内置业务逻辑；插件插拔、YAML 定义工作流、串行执行节点、
 > LLM 插件生命周期由框架强制管理、全局统一数据流转；适配单 GPU 显存有限场景。
 
@@ -92,7 +93,9 @@ workflow_data = {
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) —— 如何写插件 / 工作流
 - [`CHANGELOG.md`](CHANGELOG.md) —— 变更日志
 
-## 开源计划
+## 同步与开源
 
-先以 private 仓库每日同步，等差异化论证（为什么比「Ollama + Talos」这类组合更好用）
-写进决策记录后再转 public。见决策记录第四、五节。
+- **已打通**：本地 ↔ GitHub，每天 22:00 自动同步（无改动不动、单测不过不提交）
+- **当前可见性**：public。若要转 private：仓库 Settings → Danger Zone → Change visibility
+- **开源计划**：等差异化论证（为什么比「Ollama + Talos」这类组合更好用）写进决策记录后再正式对外。
+  详见 [`docs/决策与评审记录.md`](docs/决策与评审记录.md) 第四、五、七节。

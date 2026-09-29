@@ -15,6 +15,8 @@
 - 4 个 dummy 插件（`llm_dummy` / `api_dummy` / `skill_print_payload` / `kb_dummy`）与 `workflow/demo.yaml`
 - `tests/test_engine.py`：unittest 覆盖生命周期、守卫、checkpoint、schema
 - `docs/GitHub同步规范.md`、`docs/决策与评审记录.md`
+- 打通 GitHub：SSH 认证（`~/.ssh/id_ed25519_ai_framework`）+ 首次推送（远端 `git@github.com:zhouxinyugao/-.git`）
+- 每日 22:00 自动同步（无改动不动、单测不过不提交、禁 force）
 
 ### Added（第二批：融合层骨头）
 - `core/concurrency.py`：节点内并发工具（结果同序、fail-fast 可切、进度回调）

@@ -16,20 +16,31 @@
 
 理由：开源定位未定。先 private 既能拿云端备份与跨设备同步的好处，又不用提前承诺 API 稳定性。
 
-## 2. 认证方式
+## 2. 认证方式（当前：SSH）
 
-**GitHub CLI（`gh`）浏览器登录**——凭据由系统托管，token 不落盘、不进仓库、不经手任何人。
+**SSH 密钥**（2026-09-30 已配置完成）：
 
-```bash
-gh auth login --web --git-protocol https   # 只需做一次
-gh auth status                             # 验证
-```
-
-首次建立远端：
+- 密钥：`~/.ssh/id_ed25519_ai_framework`
+- `~/.ssh/config` 已为 `Host github.com` 绑定该密钥并开启 `IdentitiesOnly yes`
+- 验证：`ssh -T git@github.com` → `Hi zhouxinyugao!`
 
 ```bash
-gh repo create ai_framework --private --source=. --remote=origin --push
+ssh-keygen -t ed25519 -C "ai_framework@local" -f ~/.ssh/id_ed25519_ai_framework   # 生成（已做）
+ssh -T git@github.com                                                             # 验证
 ```
+
+远端已在用：
+
+```bash
+git remote add origin git@github.com:zhouxinyugao/-.git    # 已配好
+git push -u origin master                                  # 已完成首次推送
+```
+
+### 备选：gh CLI / PAT（未启用）
+
+`gh auth login --web` 曾两次 `Bad Gateway`（当时未开代理）。若日后需要无人值守地建仓库、
+改可见性，可启用 PAT（classic + `repo` 权限）存进 Windows 凭据管理器。
+**用户表示先了解 PAT 后再决定，暂不启用。**
 
 ## 3. 每日同步流程（手敲版）
 
@@ -68,8 +79,14 @@ cp .env.example .env        # 按需填密钥
 python main.py list-plugins
 ```
 
-## 7. 待办
+## 7. 状态与待办
 
-- [ ] 完成 `gh auth login` 与首次 push
-- [ ] 确认是否启用「每日自动同步」（定时 commit + push）
+已完成：
+- [x] SSH 认证打通（`ssh -T git@github.com` 通过）
+- [x] 首次 push（6 次提交已上行）
+- [x] 每日 22:00 自动同步（无改动不动 / 单测不过不提交 / 禁 `--force`）
+
+待办：
+- [ ] 仓库由 public 转 private（需用户在网页操作）
+- [ ] 视情况启用 PAT，实现完全无人值守（含建仓、改可见性）
 - [ ] 决定开源时机（补差异化论证后再转 public）
